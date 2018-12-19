@@ -15,5 +15,15 @@
   "bugs": {
     "url": "https://github.com/ByeEric/ServiceS/issues"
   },
-  "homepage": "https://github.com/ByeEric/ServiceS#readme"
+  "homepage": "https://github.com/ByeEric/ServiceS#readme",
+  "devDependencies": {
+    "babel-preset-airbnb": "^3.2.0",
+    "babel-preset-env": "^1.7.0",
+    "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor",
+    "mongo-seeding": "^3.0.0"
+  },
+  "dependencies": {
+    "express": "^4.16.4",
+    "mongoose": "^5.4.0"
+  }
 }
