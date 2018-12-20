@@ -2,9 +2,10 @@
   "name": "services",
   "version": "1.0.0",
   "description": "Sean's Services",
-  "main": "server.js",
+  "main": "./Server/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "buildData": "node Database/dbpopulation/petData.js",
+    "test": "nodemon --exec 'mocha -R min'"
   },
   "repository": {
     "type": "git",
@@ -17,13 +18,14 @@
   },
   "homepage": "https://github.com/ByeEric/ServiceS#readme",
   "devDependencies": {
+    "@babel/core": "^7.2.2",
     "babel-preset-airbnb": "^3.2.0",
     "babel-preset-env": "^1.7.0",
-    "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor",
-    "mongo-seeding": "^3.0.0"
+    "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor"
   },
   "dependencies": {
     "express": "^4.16.4",
+    "mocha": "^5.2.0",
     "mongoose": "^5.4.0"
   }
 }
