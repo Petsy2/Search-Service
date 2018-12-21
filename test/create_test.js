@@ -8,10 +8,8 @@ describe("Creating documents", function() {
     Dog.save()
       .then(function() {
         assert(!Dog.isNew); //if Dog is saved to db it is not new
-        done();
       })
-      .catch(function(err) {
-        console.log(err);
-      });
+      .finally(done)
+      .catch(function(err) {});
   });
 });

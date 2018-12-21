@@ -2,57 +2,45 @@ const assert = require("assert");
 const Pet = require("./test_db");
 
 describe("Deleting a Pet", function() {
-  let dog;
+  let Dog;
 
   beforeEach(function(done) {
-    dog = new Pet({ pet_id: 800813 });
-    dog
-      .save()
-      .then(function() {
-        done();
-      })
-      .catch(function(err) {
-        console.log(err);
-      });
+    Dog = new Pet({ pet_id: 800813 });
+    Dog.save()
+      .finally(done)
+      .catch(function(err) {});
   });
 
   it("removes a Pet using it's instance", function(done) {
-    dog
-      .remove()
-      .then(function(pet) {
-        assert(pet === null);
-        done();
+    Pet.deleteOne()
+      .then(function(Dog) {
+        assert(Dog === null);
       })
-      .catch(function(err) {
-        console.log(err);
-      });
+      .finally(done)
+      .catch(function(err) {});
   });
 
   it("it removes multiple Pets!", function(done) {
-    Pet.remove({ pet_id: 800813 })
+    Pet.deleteOne({ pet_id: 800813 })
       .then(function() {
         Pet.findOne({ pet_id: 800813 });
       })
-      .then(function(pet) {
-        assert(pet === null);
-        done();
+      .then(function(Dog) {
+        assert(Dog === null);
       })
-      .catch(function(err) {
-        console.log(err);
-      });
+      .finally(done)
+      .catch(function(err) {});
   });
 
   it("removes a Pet", function(done) {
-    Pet.findOneAndRemove(dog._id)
+    Pet.findOneAndDelete(Dog._id)
       .then(function() {
         Pet.findOne({ pet_id: 800813 });
       })
-      .then(function(pet) {
-        assert(pet === null);
-        done();
+      .then(function(Dog) {
+        assert(Dog === null);
       })
-      .catch(function(err) {
-        console.log(err);
-      });
+      .finally(done)
+      .catch(function(err) {});
   });
 });
