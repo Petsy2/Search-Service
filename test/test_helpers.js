@@ -6,13 +6,15 @@ mongoose.connect(
   { useNewUrlParser: true }
 );
 mongoose.connection
-  .once("open", () => console.log("Connected!"))
-  .on("error", error => {
+  .once("open", function() {
+    console.log("Connected!");
+  })
+  .on("error", function(error) {
     console.warn("Error : ", error);
   });
 
-beforeEach(done => {
-  mongoose.connection.collections.pets.drop(() => {
+beforeEach(function(done) {
+  mongoose.connection.collections.pets.drop(function() {
     //this function runs after the drop is completed
     done();
   });
