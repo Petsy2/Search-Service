@@ -18,4 +18,24 @@ const petSchema = new Schema({
 
 const Pet = mongoose.model("Pet", petSchema);
 
+const getPetFamily = (req, callback) => {
+  Pet.findOne({ pet_id: req }, "family", (err, result) => {
+    if (err) {
+      throw new Error("broken inside getPetFamily");
+    } else {
+      callback(null, result);
+    }
+  });
+};
+
+const getRecommendedPets = (req, res) => {
+  getPetFamily(req, (err, response) => {
+    if (err) {
+      throw new Error("broken inside getRecommenedPets");
+    }
+  });
+};
+
 module.exports = Pet;
+module.exports = getPetFamily;
+module.exports = getRecommendedPets;
