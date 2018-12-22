@@ -6,17 +6,18 @@ const url = "http://localhost:1337/api/recommends";
 describe("GET one", function() {
   const mockReq = params => {
     axios
-      .get(params)
+      .get(url, params)
       .then(response => response)
       .catch(err => {});
   };
 
   it("should route a get request for a pet_id", function() {
-    tiger = `${url}?pet_id:1111`;
-    mockReq(tiger)
-      .then(response => response.class.should.equal("mammal"))
-      .then(response => response.family.should.equal("Felidae"))
-      .then(response => response.species.should.equal("Tiger"))
-      .then(response => response.should.have.property("img_url"));
+    tiger = { headers: { pet_id: 1111 } };
+    let response = mockReq(tiger);
+
+    response.class.should.equal("mammal");
+    response.family.should.equal("Felidae");
+    response.species.should.equal("Tiger");
+    response.should.have.property("img_url");
   });
 });
