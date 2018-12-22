@@ -2,6 +2,7 @@ const should = require("chai").should();
 const express = require("express");
 const axios = require("axios");
 const url = "http://localhost:1337/api/recommends";
+const server = require("../../Server/server.js");
 
 describe("GET one", function() {
   it("should route a get request for a pet_id", function() {
