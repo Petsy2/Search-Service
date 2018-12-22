@@ -4,7 +4,7 @@
   "description": "Sean's Services",
   "main": "./Server/server.js",
   "scripts": {
-    "buildData": "node Database/dbpopulation/petData.js",
+    "seed": "node Database/dbpopulation/petData.js",
     "test": "nodemon --exec 'mocha -R min'"
   },
   "repository": {
