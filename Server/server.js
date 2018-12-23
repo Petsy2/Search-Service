@@ -7,11 +7,13 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+//API end point for recommended pets
+
 app.get("/api/recommends", (req, res) => {
   const request = req.headers.pet_id;
   db.getRecommendedPets(request, (err, response) => {
     if (err) {
-      console.log(err);
+      res.send(err);
     } else {
       res.send(response);
     }

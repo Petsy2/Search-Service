@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const Pet = require("../PetsyRecommends");
+const db = require("../PetsyRecommends");
 mongoose.Promise = global.Promise;
 
 const options = {
@@ -28,7 +28,7 @@ mongoose.connection.on("disconnected", function() {
   });
 });
 console.log("Seeding the database boss, RELEASING THE PETS!!!!");
-Pet.insertMany([
+db.Pet.insertMany([
   {
     pet_id: "1111",
     class: "mammal",
