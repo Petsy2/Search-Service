@@ -21,29 +21,30 @@ const petSchema = new Schema({
 
 const Pet = mongoose.model("Pet", petSchema);
 
-const getPetFamily = (req, callback) => {
-  Pet.findOne({ pet_id: req }, "family", (err, result) => {
+const getPetFamily = (pet_id, callback) => {
+  Pet.findOne({ pet_id }, "family", (err, result) => {
     if (err) {
-      callback(err);
       console.log("error in getPetFamily at database", err);
+      callback(err);
     } else {
       callback(null, result);
     }
   });
 };
 
-const getRecommendedPets = (req, callback) => {
-  getPetFamily(req, (err, response) => {
+const getRecommendedPets = (pet_id, callback) => {
+  getPetFamily(pet_id, (err, response) => {
     if (err) {
       console.log("error after getPetFamily ", err);
       callback(err);
     } else if (response === null) {
       callback("The pet_id is invalid");
     } else {
-      petFamily = response.family;
-      Pet.find({ family: petFamily }, (err, result) => {
+      family = response.family;
+      Pet.find({ family }, (err, result) => {
         if (err) {
-          callback("error after Pet.find at database ", err);
+          console.log("error after Pet.find at database ", err);
+          callback(err);
         } else {
           callback(null, result);
         }
