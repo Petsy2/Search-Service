@@ -1,21 +1,31 @@
-const should = require("chai").should();
-const express = require("express");
-const axios = require("axios");
-const url = "http://localhost:1337/api/recommends";
+const assert = require("chai").assert;
+const mockGET = require("./server_test_helpers.js");
 
-describe("GET one", function() {
-  it("should route a get request for a pet_id", function() {
-    const pet = { pet_id: 1111 };
-    console.log(pet);
+describe("Get requests are handled correctly", function() {
+  it("should expect a response to a get request", function() {
+    const currentPet = { headers: { pet_id: 1111 } };
+    mockGET(currentPet, response => {
+      console.log(response);
+      assert.isOk(response.status === 200, "return status should be 200");
+      assert.isOk(
+        response.statusText === "OK",
+        "response status text should be OK"
+      );
+    });
+  });
 
-    axios
-      .get(url, {
-        params: {
-          pet_id: 1111
-        }
-      })
-      .then(response => response.species.should.equal("Tiger"))
-      .then(response => response.family.should.equal("Felidae"))
-      .catch(err => console.error(err));
+  it("should expect response to contain an array of objects", function() {
+    const currentPet = { headers: { pet_id: 12220 } };
+    mockGET(currentPet, response => {
+      assert.isOk(Array.isArray(response.data));
+      assert.isOk(response.data.length === 13);
+    });
+  });
+
+  it("should expect it to return an error if pet_id is not in database", function() {
+    const currentPet = { headers: { pet_id: 8675309 } };
+    mockGET(currentPet, response => {
+      assert.isOk(response === "The pet_id is invalid");
+    });
   });
 });
