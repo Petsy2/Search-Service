@@ -1,8 +1,9 @@
 const express = require("express");
 const db = require("../Database/PetsyRecommends");
 const bodyParser = require("body-parser");
-const port = 1337;
 const app = express();
+require("dotenv").config();
+const port = process.env.PORT || 3000;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
