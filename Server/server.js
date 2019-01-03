@@ -2,7 +2,7 @@ const express = require("express");
 const db = require("../Database/PetsyRecommends");
 const bodyParser = require("body-parser");
 const app = express();
-require("dotenv").config({ path: "../../" });
+require("dotenv").config({ path: __dirname + "/../../.env" });
 const port = process.env.PORT || 3000;
 
 app.use(bodyParser.json());

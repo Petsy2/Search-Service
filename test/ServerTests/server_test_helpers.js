@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const axios = require("axios");
-require("dotenv").config({ path: "../../../" });
+require("dotenv").config({ path: __dirname + "/../../../.env" });
 
 //get sensitive information from .env file
 const username = process.env.DB_USERNAME;
