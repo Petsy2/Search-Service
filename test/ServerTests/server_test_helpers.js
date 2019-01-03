@@ -1,12 +1,19 @@
 const mongoose = require("mongoose");
 const axios = require("axios");
-const url = "http://localhost:1337/api/recommends";
+require("dotenv").config();
+
+//get sensitive information from .env file
+const username = process.env.DB_USERNAME;
+const password = process.env.DB_PASSWORD;
+const uri = process.env.DB_URI;
+const DB = process.env.DB;
+const url = `mongodb+srv://${username}:${password}@${uri}/${DB}?retryWrites=true`;
 
 mongoose.Promise = global.Promise;
 
 mongoose
   .connect(
-    "mongodb://localhost:27017/PetsyRecommends",
+    url,
     { useNewUrlParser: true }
   )
   .then(() => console.log("connected to databse boss!!"))
