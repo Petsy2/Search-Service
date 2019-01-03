@@ -1,6 +1,15 @@
+require("dotenv").config({ path: "../../../" });
+
 const mongoose = require("mongoose");
 const db = require("../PetsyRecommends");
+
 mongoose.Promise = global.Promise;
+
+const username = process.env.DB_USERNAME;
+const password = process.env.DB_PASSWORD;
+const uri = process.env.DB_URI;
+const DB = process.env.DB;
+const url = `mongodb+srv://${username}:${password}@${uri}/${DB}?retryWrites=true`;
 
 const options = {
   useNewUrlParser: true,
@@ -9,7 +18,7 @@ const options = {
 };
 
 mongoose.connect(
-  "mongodb://localhost:27017/PetsyRecommends",
+  url,
   options
 );
 mongoose.connection.on("connected", function() {
