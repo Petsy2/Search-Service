@@ -8,6 +8,7 @@
     "seed": "node Database/dbpopulation/petData.js",
     "test": "nodemon --exec 'mocha -R min'",
     "restart": "pm2 startOrRestart ecosystem.config.js",
+    "rebuild": "pm2 deploy ecosystem.config.js production setup",
     "deploy": "pm2 deploy ecosystem.config.js production"
   },
   "repository": {
