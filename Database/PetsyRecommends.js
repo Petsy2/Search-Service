@@ -7,14 +7,14 @@ const username = process.env.DB_USERNAME;
 const password = process.env.DB_PASSWORD;
 const uri = process.env.DB_URI;
 const DB = process.env.DB;
-const url = `mongodb+srv://${username}:${password}@${uri}/${DB}?retryWrites=true`;
+const url = `mongodb+srv://${username}:${password}@${uri}/${DB}?`;
 
 mongoose.Promise = global.Promise;
 
 mongoose
   .connect(
     url,
-    { useNewUrlParser: true }
+    { useNewUrlParser: true, authSource: "admin" }
   )
   .then(() => console.log("connected to databse boss!!"))
   .catch(err => console.log("error connecting to database: ", err));
