@@ -2,9 +2,12 @@ const express = require("express");
 const db = require("../Database/PetsyRecommends");
 const bodyParser = require("body-parser");
 const app = express();
-require("dotenv").config({ path: __dirname + "/../../.env" });
+const cors = require("cors");
 const port = process.env.PORT || 3000;
 
+require("dotenv").config({ path: __dirname + "/../../.env" });
+
+app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
