@@ -10,12 +10,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 //API end point for recommended pets
 
-app.get("/api/recommends", (req, res) => {
-  if (req.headers.pet_id === undefined) {
+app.get("/api/recommends/:pet_id", (req, res) => {
+  if (req.params.pet_id === undefined) {
     res.setStatus(400);
-    res.send("ERROR: pet_id must be contained within the request headers");
+    res.send("ERROR: pet_id must be contained within params of request");
   } else {
-    const pet_id = req.headers.pet_id;
+    const pet_id = req.params.pet_id;
     db.getRecommendedPets(pet_id, (err, response) => {
       if (err) {
         res.send(err);
