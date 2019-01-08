@@ -16,7 +16,7 @@ mongoose
     url,
     { useNewUrlParser: true, authSource: "admin" }
   )
-  .then(() => console.log("connected to databse boss!!"))
+  .then(() => console.log("connected to database boss!!"))
   .catch(err => console.log("error connecting to database: ", err));
 
 const Schema = mongoose.Schema;
