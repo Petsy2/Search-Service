@@ -1,11 +1,11 @@
 const mongoose = require("mongoose");
 
 //get sensitive information from .env file
-const username = process.env.DB_USERNAME || "root";
-const password = process.env.DB_PASSWORD || "password";
-const uri = process.env.DB_URI || "localhost:27017";
-const DB = process.env.DB || "ten_mil";
-const url = `mongodb://${username}:${password}@${uri}/${DB}`;
+const user = process.env.MDB_USER || "root";
+const password = process.env.MDB_PASSWORD || "password";
+const uri = process.env.MDB_URI || "localhost:27017";
+const DB = process.env.MDB_NAME || "ten_mil";
+const url = `mongodb://${user}:${password}@${uri}/${DB}`;
 
 mongoose.Promise = global.Promise;
 
