@@ -2,8 +2,11 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const morgan = require("morgan");
 const cors = require("cors");
-const db = require("../db/mongoDB");
-// const db = require("../db/postgresDB");
+if (process.env.DB === "mongo") {
+  var db = require("../db/mongoDB");
+} else {
+  var db = require("../db/postgresDB");
+}
 const app = express();
 
 app.use(morgan("dev"));
