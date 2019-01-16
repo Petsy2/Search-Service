@@ -4,7 +4,7 @@
   "description": "Petsy Recommends",
   "main": "./server/server.js",
   "scripts": {
-    "start": "nodemon ./server/server.js",
+    "start": "nodemon ./Server/server.js",
     "restart": "pm2 startOrRestart ecosystem.config.js",
     "rebuild": "pm2 deploy ecosystem.config.js production setup",
     "deploy": "pm2 deploy ecosystem.config.js production"
