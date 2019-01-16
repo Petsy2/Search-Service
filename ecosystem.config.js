@@ -1,18 +1,18 @@
 module.exports = {
   apps: [
     {
-      name: "ServiceS",
-      script: "./Server/server.js"
+      name: "PetsyRecommends",
+      script: "./server/server.js"
     }
   ],
   deploy: {
     production: {
       user: "ubuntu",
-      host: "ec2-52-206-107-252.compute-1.amazonaws.com",
-      key: "~/.ssh/petsyRecommends.pem",
+      host: "ec2-18-234-245-254.compute-1.amazonaws.com",
+      key: "~/.ssh/firstInstance.pem",
       ref: "origin/master",
-      repo: "https://github.com/ByeEric/ServiceS.git",
-      path: "/home/ubuntu/recommendsAPI",
+      repo: "git@github.com:Michael-K-Oconnor/Search-Service.git",
+      path: "/home/ubuntu/petsyRecommends",
       "post-deploy": "npm install && pm2 startOrRestart ecosystem.config.js"
     }
   }
