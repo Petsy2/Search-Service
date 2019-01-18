@@ -1,0 +1,11 @@
+version: "2.1"
+
+services:
+  petsy-search:
+    image: petsy-search
+    build: .
+    environment:
+      NODE_ENV: production
+    ports:
+      - 5001:5001
+    env_file: .env.prod

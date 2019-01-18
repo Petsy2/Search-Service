@@ -3,8 +3,10 @@ const bodyParser = require("body-parser");
 const morgan = require("morgan");
 const cors = require("cors");
 if (process.env.DB === "mongo") {
+  console.log("mongo");
   var db = require("../db/mongoDB");
 } else {
+  console.log("postgres");
   var db = require("../db/postgresDB");
 }
 const app = express();
