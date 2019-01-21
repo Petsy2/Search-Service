@@ -6,7 +6,6 @@ const password = process.env.MDB_PASSWORD || "password";
 const uri = process.env.MDB_URI || "localhost:27017";
 const DB = process.env.MDB_NAME || "ten_mil";
 const url = `mongodb://${user}:${password}@${uri}/${DB}`;
-console.log(url);
 mongoose.Promise = global.Promise;
 
 mongoose
