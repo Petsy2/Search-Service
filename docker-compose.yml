@@ -1,4 +1,4 @@
-version: "2.1"
+version: "3.7"
 
 services:
   petsy-search:
@@ -10,3 +10,4 @@ services:
       - 5001:5001
       - 3000:3000
     env_file: .env.prod
+    restart: unless-stopped

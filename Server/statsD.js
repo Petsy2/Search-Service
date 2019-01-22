@@ -13,7 +13,9 @@ module.exports = function expressStatsdInit(options) {
 
     // Function called on response finish that sends stats to statsd
     function sendStats() {
-      var key = req.statsdKey + ".";
+      var ipAdr = process.env.HOSTNAME || "unknownIP";
+      ipAdr = ipAdr.replace(/\./gi, "");
+      var key = ipAdr + "." + req.statsdKey + ".";
       // Status Code
       var statusCode = res.statusCode || "unknown_status";
       client.increment(key + "status_code." + statusCode);
