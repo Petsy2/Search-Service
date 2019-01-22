@@ -19,7 +19,7 @@ module.exports = function expressStatsdInit(options) {
       // Status Code
       var statusCode = res.statusCode || "unknown_status";
       client.increment(key + "status_code." + statusCode);
-      client.increment(key + "request.");
+      client.increment(key + "request");
       // Response Time
       var duration = new Date().getTime() - startTime;
       client.timing(key + "response_time", duration);
